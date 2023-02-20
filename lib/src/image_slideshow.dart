@@ -13,6 +13,7 @@ class ImageSlideshow extends StatefulWidget {
     this.initialPage = 0,
     this.indicatorColor,
     this.indicatorBackgroundColor = Colors.grey,
+    this.indicatorBottomPadding = 10.0,
     this.onPageChanged,
     this.autoPlayInterval,
     this.isLoop = false,
@@ -36,8 +37,11 @@ class ImageSlideshow extends StatefulWidget {
   /// The color to paint the indicator.
   final Color? indicatorColor;
 
-  /// The color to paint behind th indicator.
+  /// The color to paint behind the indicator.
   final Color? indicatorBackgroundColor;
+  
+  /// The bottomp padding of the indicator.
+  final double indicatorBottomPadding;
 
   /// Called whenever the page in the center of the viewport changes.
   final ValueChanged<int>? onPageChanged;
@@ -152,7 +156,7 @@ class ImageSlideshowState extends State<ImageSlideshow> {
           Positioned(
             left: 0,
             right: 0,
-            bottom: 10,
+            bottom: widget.indicatorBottomPadding,
             child: ValueListenableBuilder<int>(
               valueListenable: _currentPageNotifier,
               builder: (context, value, child) {
